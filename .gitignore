@@ -1,0 +1,21 @@
+# MySQL data folder (Docker volume or local DB data)
+db/mysql-data/
+
+# Composer / PHP dependencies (if added later)
+vendor/
+
+# Log files
+*.log
+
+# System / OS files
+.DS_Store
+Thumbs.db
+
+# IDE/editor folders
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment files 
+.env
