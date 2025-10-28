@@ -23,7 +23,7 @@ services:
 
   # Web service (PHP + Apache)
   web:
-    build: ./php
+    build: ./docker_php
     container_name: sports_web
     restart: unless-stopped
     environment:
