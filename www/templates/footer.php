@@ -1,8 +1,8 @@
-</div> <!-- End container -->
+</div> <!-- End main-container -->
     
-    <footer class="mt-5 py-4 bg-light text-center">
-        <div class="container">
-            <p class="text-muted mb-0">&copy; 2025 <?php echo SITE_NAME; ?> - Mock Demo Application</p>
+    <footer class="text-center">
+        <div class="container-fluid">
+            <p class="mb-0">&copy; 2025 <?php echo SITE_NAME; ?> - Mock Demo Application</p>
         </div>
     </footer>
     
