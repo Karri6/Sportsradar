@@ -7,20 +7,20 @@ require_once __DIR__ . '/db.php';
  * Get all sports
  */
 function getAllSports() {
-    global $pdo;
-    $stmt = $pdo->query("SELECT sport_id, name, description FROM sports ORDER BY name");
-    return $stmt->fetchAll();
+    global $databaseConnection;
+    $query = $databaseConnection->query("SELECT sport_id, name, description FROM sports ORDER BY name");
+    return $query->fetchAll();
 }
 
 /**
  * Add new sport
  */
 function addSport($name, $description = '') {
-    global $pdo;
+    global $databaseConnection;
     try {
-        $stmt = $pdo->prepare("INSERT INTO sports (name, description) VALUES (?, ?)");
-        $stmt->execute([trim($name), trim($description)]);
-        return $pdo->lastInsertId();
+        $insertSport = $databaseConnection->prepare("INSERT INTO sports (name, description) VALUES (?, ?)");
+        $insertSport->execute([trim($name), trim($description)]);
+        return $databaseConnection->lastInsertId();
     } catch (PDOException $e) {
         return false;
     }
@@ -30,23 +30,23 @@ function addSport($name, $description = '') {
  * Get all venues
  */
 function getAllVenues() {
-    global $pdo;
-    $stmt = $pdo->query("SELECT venue_id, name, city, address, capacity FROM venues ORDER BY name");
-    return $stmt->fetchAll();
+    global $databaseConnection;
+    $query = $databaseConnection->query("SELECT venue_id, name, city, address, capacity FROM venues ORDER BY name");
+    return $query->fetchAll();
 }
 
 /**
  * Add new venue
  */
 function addVenue($name, $city, $address = '', $capacity = null) {
-    global $pdo;
+    global $databaseConnection;
     try {
-        $stmt = $pdo->prepare("
-            INSERT INTO venues (name, city, address, capacity) 
+        $insertVenue = $databaseConnection->prepare("
+            INSERT INTO venues (name, city, address, capacity)
             VALUES (?, ?, ?, ?)
         ");
-        $stmt->execute([trim($name), trim($city), trim($address), $capacity]);
-        return $pdo->lastInsertId();
+        $insertVenue->execute([trim($name), trim($city), trim($address), $capacity]);
+        return $databaseConnection->lastInsertId();
     } catch (PDOException $e) {
         return false;
     }
@@ -56,41 +56,41 @@ function addVenue($name, $city, $address = '', $capacity = null) {
  * Get all teams (optionally filtered by sport)
  */
 function getAllTeams($sportId = null) {
-    global $pdo;
-    
+    global $databaseConnection;
+
     if ($sportId) {
-        $stmt = $pdo->prepare("
+        $teamsBySport = $databaseConnection->prepare("
             SELECT t.team_id, t.name, t.city, t._sport_id, s.name as sport_name
             FROM teams t
             JOIN sports s ON t._sport_id = s.sport_id
             WHERE t._sport_id = ?
             ORDER BY t.name
         ");
-        $stmt->execute([$sportId]);
+        $teamsBySport->execute([$sportId]);
+        return $teamsBySport->fetchAll();
     } else {
-        $stmt = $pdo->query("
+        $allTeamsQuery = $databaseConnection->query("
             SELECT t.team_id, t.name, t.city, t._sport_id, s.name as sport_name
             FROM teams t
             JOIN sports s ON t._sport_id = s.sport_id
             ORDER BY t.name
         ");
+        return $allTeamsQuery->fetchAll();
     }
-    
-    return $stmt->fetchAll();
 }
 
 /**
  * Add new team
  */
-function addTeam($sportId, $name, $city = '', $foundedYear = null) {
-    global $pdo;
+function addTeam($sportId, $name, $city = '') {
+    global $databaseConnection;
     try {
-        $stmt = $pdo->prepare("
-            INSERT INTO teams (_sport_id, name, city, founded_year) 
-            VALUES (?, ?, ?, ?)
+        $insertTeam = $databaseConnection->prepare("
+            INSERT INTO teams (_sport_id, name, city)
+            VALUES (?, ?, ?)
         ");
-        $stmt->execute([$sportId, trim($name), trim($city), $foundedYear]);
-        return $pdo->lastInsertId();
+        $insertTeam->execute([$sportId, trim($name), trim($city)]);
+        return $databaseConnection->lastInsertId();
     } catch (PDOException $e) {
         return false;
     }
@@ -100,10 +100,10 @@ function addTeam($sportId, $name, $city = '', $foundedYear = null) {
  * Get all events
  */
 function getAllEvents() {
-    global $pdo;
-    
+    global $databaseConnection;
+
     $sql = "
-        SELECT 
+        SELECT
             e.event_id,
             e.event_date,
             e.event_time,
@@ -128,19 +128,19 @@ function getAllEvents() {
         LEFT JOIN teams t_winner ON r._winner_id = t_winner.team_id
         ORDER BY e.event_date DESC, e.event_time DESC
     ";
-    
-    $stmt = $pdo->query($sql);
-    return $stmt->fetchAll();
+
+    $allEventsQuery = $databaseConnection->query($sql);
+    return $allEventsQuery->fetchAll();
 }
 
 /**
  * Get upcoming events
  */
 function getUpcomingEvents() {
-    global $pdo;
-    
+    global $databaseConnection;
+
     $sql = "
-        SELECT 
+        SELECT
             e.event_id,
             e.event_date,
             e.event_time,
@@ -161,19 +161,19 @@ function getUpcomingEvents() {
         WHERE e.event_date >= CURDATE() AND e.status = 'scheduled'
         ORDER BY e.event_date ASC, e.event_time ASC
     ";
-    
-    $stmt = $pdo->query($sql);
-    return $stmt->fetchAll();
+
+    $upcomingEventsQuery = $databaseConnection->query($sql);
+    return $upcomingEventsQuery->fetchAll();
 }
 
 /**
  * Get past events
  */
 function getPastEvents() {
-    global $pdo;
-    
+    global $databaseConnection;
+
     $sql = "
-        SELECT 
+        SELECT
             e.event_id,
             e.event_date,
             e.event_time,
@@ -199,9 +199,9 @@ function getPastEvents() {
         WHERE e.status = 'completed'
         ORDER BY e.event_date DESC, e.event_time DESC
     ";
-    
-    $stmt = $pdo->query($sql);
-    return $stmt->fetchAll();
+
+    $pastEventsQuery = $databaseConnection->query($sql);
+    return $pastEventsQuery->fetchAll();
 }
 
 /**
@@ -209,50 +209,50 @@ function getPastEvents() {
  * Returns ['success' => true/false, 'event_id' => 123, 'error' => 'message']
  */
 function addEvent($sportId, $venueId, $eventDate, $eventTime, $homeTeamId, $awayTeamId, $description = '') {
-    global $pdo;
-    
+    global $databaseConnection;
+
     try {
-        $pdo->beginTransaction();
-        
+        $databaseConnection->beginTransaction();
+
         // Insert event
-        $stmt = $pdo->prepare("
+        $insertEvent = $databaseConnection->prepare("
             INSERT INTO events (_sport_id, _venue_id, event_date, event_time, description, status)
             VALUES (?, ?, ?, ?, ?, 'scheduled')
         ");
-        
+
         // Handle optional venue
         $venueIdValue = ($venueId === '' || $venueId === null) ? null : $venueId;
-        
-        $stmt->execute([
+
+        $insertEvent->execute([
             $sportId,
             $venueIdValue,
             $eventDate,
             $eventTime,
             trim($description)
         ]);
-        
-        $eventId = $pdo->lastInsertId();
-        
+
+        $eventId = $databaseConnection->lastInsertId();
+
         // Insert home team
-        $stmt = $pdo->prepare("
+        $insertHomeTeam = $databaseConnection->prepare("
             INSERT INTO event_teams (_event_id, _team_id, is_home)
             VALUES (?, ?, TRUE)
         ");
-        $stmt->execute([$eventId, $homeTeamId]);
-        
+        $insertHomeTeam->execute([$eventId, $homeTeamId]);
+
         // Insert away team
-        $stmt = $pdo->prepare("
+        $insertAwayTeam = $databaseConnection->prepare("
             INSERT INTO event_teams (_event_id, _team_id, is_home)
             VALUES (?, ?, FALSE)
         ");
-        $stmt->execute([$eventId, $awayTeamId]);
-        
-        $pdo->commit();
-        
+        $insertAwayTeam->execute([$eventId, $awayTeamId]);
+
+        $databaseConnection->commit();
+
         return ['success' => true, 'event_id' => $eventId];
-        
+
     } catch (PDOException $e) {
-        $pdo->rollBack();
+        $databaseConnection->rollBack();
         return ['success' => false, 'error' => $e->getMessage()];
     }
 }
