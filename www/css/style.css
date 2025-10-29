@@ -1,0 +1,357 @@
+/*
+    This is almost fully generated stylesheet based on a detailed prompt 
+    and styling details gotten by inspecting the Sportradar homepages using dev tools.
+*/
+
+/* CSS Variables */
+:root {
+    --sr-red: #f00;
+    --sr-dark-blue: #00003C;
+    --sr-purple: #221E5F;
+    --sr-white: #fff;
+    --sr-light-gray: #e8e8e8;
+    --sr-text-dark: #212529;
+}
+
+/* ================================================
+   Global Styles
+   ================================================ */
+body {
+    background-color: var(--sr-light-gray);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    padding-top: 0;
+    margin: 0;
+}
+
+/* ================================================
+   Navbar Styling - Sportsradar Style
+   ================================================ */
+.navbar {
+    background-color: var(--sr-dark-blue) !important;
+    box-shadow: none;
+    position: relative;
+    padding: 25px 40px;
+    margin: 0;
+}
+
+.navbar-brand {
+    color: var(--sr-white) !important;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: -0.5px;
+}
+
+.navbar-brand:hover {
+    color: var(--sr-red) !important;
+}
+
+/* Pill-shaped navigation buttons */
+.navbar-nav {
+    gap: 15px;
+}
+
+.nav-link {
+    color: var(--sr-text-dark) !important;
+    background-color: var(--sr-white);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 12px 35px !important;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.nav-link:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+/* ================================================
+   Secondary Navigation Bar (Purple Section)
+   ================================================ */
+.secondary-nav {
+    background-color: var(--sr-purple);
+    padding: 20px 40px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Filter buttons on calendar page */
+.filter-buttons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.filter-btn {
+    background-color: var(--sr-white);
+    color: var(--sr-text-dark);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+/* ================================================
+   Page Container
+   ================================================ */
+.main-container {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+}
+
+.content-wrapper {
+    display: flex;
+    background-color: var(--sr-light-gray);
+    min-height: calc(100vh - 200px);
+}
+
+.events-section {
+    flex: 1;
+    padding: 30px;
+}
+
+.sidebar-section {
+    width: 400px;
+    padding: 30px;
+    background-color: var(--sr-light-gray);
+}
+
+.sidebar-card {
+    background-color: var(--sr-white);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: left;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-height: calc(100vh - 250px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.sidebar-card h3 {
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.sidebar-card p {
+    color: var(--sr-text-dark);
+    line-height: 2;
+}
+
+/* ================================================
+   Page Headers
+   ================================================ */
+h1 {
+    color: var(--sr-dark-blue);
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 2rem;
+}
+
+/* ================================================
+   Tabs Navigation
+   ================================================ */
+.nav-tabs {
+    border-bottom: 2px solid var(--sr-red);
+}
+
+.nav-tabs .nav-link {
+    color: var(--sr-text-dark) !important;
+    background-color: transparent !important;
+    border: none;
+    padding: 12px 24px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-radius: 0;
+}
+
+.nav-tabs .nav-link:hover {
+    color: var(--sr-red) !important;
+    background-color: transparent !important;
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--sr-red) !important;
+    background-color: transparent !important;
+    border-bottom: 3px solid var(--sr-red);
+    margin-bottom: -2px;
+}
+
+/* ================================================
+   Event Cards
+   ================================================ */
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.event-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background-color: var(--sr-white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    width: 100%;
+    padding: 20px;
+}
+
+.event-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+.card-body {
+    padding: 0;
+}
+
+/* Sport Badge */
+.sport-badge {
+    background-color: var(--sr-red) !important;
+    color: var(--sr-white);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Date & Time */
+.card-title {
+    color: var(--sr-dark-blue);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Team Names */
+.event-card h4 {
+    color: var(--sr-text-dark);
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: -0.5px;
+}
+
+/* Score Display */
+.score {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--sr-red);
+    letter-spacing: -1px;
+}
+
+/* ================================================
+   Badges & Status
+   ================================================ */
+.badge.bg-success {
+    background-color: #28a745 !important;
+}
+
+.badge.bg-secondary {
+    background-color: #6c757d !important;
+}
+
+.badge.bg-info {
+    background-color: var(--sr-dark-blue) !important;
+}
+
+/* ================================================
+   Alerts
+   ================================================ */
+.alert-info {
+    background-color: #e7f3ff;
+    border-color: var(--sr-dark-blue);
+    color: var(--sr-dark-blue);
+}
+
+/* ================================================
+   Footer
+   ================================================ */
+footer {
+    background-color: var(--sr-dark-blue);
+    color: var(--sr-white);
+    margin-top: 0;
+}
+
+footer p {
+    margin: 0;
+    padding: 1.5rem 0;
+}
+
+/* ================================================
+   Utility Classes
+   ================================================ */
+.text-muted {
+    color: #6c757d !important;
+}
+
+/* ================================================
+   Responsive Design
+   ================================================ */
+@media (max-width: 992px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+    
+    .sidebar-section {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+    
+    .secondary-nav {
+        padding: 15px 20px;
+        flex-wrap: wrap;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    .event-card h4 {
+        font-size: 1.1rem;
+    }
+    
+    .score {
+        font-size: 1.5rem;
+    }
+    
+    .events-section {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .nav-tabs .nav-link {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .sport-badge {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .nav-link {
+        padding: 10px 20px !important;
+        font-size: 0.9rem;
+    }
+    
+    .filter-btn {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+}
