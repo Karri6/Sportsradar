@@ -355,3 +355,213 @@ footer p {
         font-size: 0.9rem;
     }
 }
+
+/* ================================================
+   Add Event Form Styling
+   ================================================ */
+
+/* Form padding and spacing */
+.add-event-form h1 {
+    color: var(--sr-dark-blue);
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+/* Form Cards */
+.add-event-form .card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: var(--sr-white);
+}
+
+.add-event-form .card-body {
+    padding: 2rem !important;
+}
+
+/* Form Labels */
+.add-event-form .form-label {
+    color: var(--sr-dark-blue);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+/* Form Inputs & Selects */
+.add-event-form .form-control,
+.add-event-form .form-select {
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 0.875rem;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.add-event-form .form-control:focus,
+.add-event-form .form-select:focus {
+    border-color: var(--sr-red);
+    box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.1);
+    outline: none;
+}
+
+/* New Fields Sections */
+.add-event-form .bg-light {
+    background-color: #f8f9fa !important;
+    border-left: 4px solid var(--sr-red);
+    border-radius: 8px;
+}
+
+.add-event-form .bg-light h6 {
+    color: var(--sr-dark-blue);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.add-event-form .bg-light input,
+.add-event-form .bg-light textarea {
+    background-color: white;
+}
+
+/* Buttons */
+.add-event-form .btn-primary {
+    background-color: var(--sr-red);
+    border-color: var(--sr-red);
+    font-weight: 600;
+    padding: 0.875rem 2.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.add-event-form .btn-primary:hover {
+    background-color: #cc0000;
+    border-color: #cc0000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+}
+
+.add-event-form .btn-secondary {
+    background-color: var(--sr-dark-blue);
+    border-color: var(--sr-dark-blue);
+    font-weight: 600;
+    padding: 0.875rem 2.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.add-event-form .btn-secondary:hover {
+    background-color: #000028;
+    border-color: #000028;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 60, 0.3);
+}
+
+/* Button container spacing */
+.add-event-form .d-flex.gap-3 {
+    gap: 1rem !important;
+}
+
+/* Help Sidebar Styling for Add Event */
+.sidebar-card h3 {
+    color: var(--sr-dark-blue);
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-card ul {
+    padding-left: 1.5rem;
+    list-style: disc;
+}
+
+.sidebar-card ul li {
+    margin-bottom: 0.75rem;
+    color: var(--sr-text-dark);
+    line-height: 1.6;
+}
+
+/* Alert Styling */
+.add-event-form .alert-success {
+    background-color: #d4edda;
+    border-color: #28a745;
+    border-left: 4px solid #28a745;
+    color: #155724;
+    border-radius: 8px;
+}
+
+.add-event-form .alert-danger {
+    background-color: #f8d7da;
+    border-color: var(--sr-red);
+    border-left: 4px solid var(--sr-red);
+    color: #721c24;
+    border-radius: 8px;
+}
+
+.add-event-form .alert-link {
+    color: var(--sr-red);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+/* Select Options Styling */
+.add-event-form select option[value="new"] {
+    color: var(--sr-red);
+    font-weight: 600;
+}
+
+.add-event-form select option[value=""] {
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Small Text */
+.add-event-form small {
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+/* Textarea */
+.add-event-form textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Date & Time Inputs */
+.add-event-form input[type="date"],
+.add-event-form input[type="time"] {
+    cursor: pointer;
+}
+
+/* Margin bottom for form groups */
+.add-event-form .mb-4 {
+    margin-bottom: 1.75rem !important;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .add-event-form .btn-lg {
+        padding: 0.75rem 2rem;
+        font-size: 0.95rem;
+    }
+    
+    .sidebar-card {
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .add-event-form .d-flex.gap-3 {
+        flex-direction: column;
+        gap: 0.75rem !important;
+    }
+    
+    .add-event-form .btn {
+        width: 100%;
+    }
+    
+    .add-event-form .card-body {
+        padding: 1.5rem !important;
+    }
+}
