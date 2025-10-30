@@ -2,7 +2,7 @@
     
     <footer class="text-center">
         <div class="container-fluid">
-            <p class="mb-0">&copy; 2025 <?php echo SITE_NAME; ?> - Mock Demo Application</p>
+            <p class="mb-0">2026 <?php echo SITE_NAME; ?> - Mock Website Demo</p>
         </div>
     </footer>
     

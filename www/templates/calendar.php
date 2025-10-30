@@ -3,28 +3,38 @@
     <div class="events-section">
         <h1 class="mb-4">Sports Events Calendar</h1>
 
-        <div class="filter-buttons mb-4">
-            <button class="filter-btn" onclick="alert('Select Sport filter - functionality to be implemented')">
-                Select Sport
-            </button>
-            <button class="filter-btn" onclick="alert('Sort filter - functionality to be implemented')">
-                Sort
-            </button>
+        <!-- Filter and Sort Controls -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <label for="sportFilter" class="form-label">Filter by Sport</label>
+                <select id="sportFilter" class="form-select" onchange="applyFilters()">
+                    <option value="">All Sports</option>
+                    <?php foreach ($sports as $sport): ?>
+                        <option value="<?php echo $sport['sport_id']; ?>"
+                            <?php echo ($currentSport == $sport['sport_id']) ? 'selected' : ''; ?>>
+                            <?php echo htmlspecialchars($sport['name']); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="sortBy" class="form-label">Sort By</label>
+                <select id="sortBy" class="form-select" onchange="applyFilters()">
+                    <option value="date" <?php echo ($currentSort == 'date') ? 'selected' : ''; ?>>Date</option>
+                    <option value="sport" <?php echo ($currentSort == 'sport') ? 'selected' : ''; ?>>Sport</option>
+                </select>
+            </div>
         </div>
 
         <!-- Navigation tabs -->
         <ul class="nav nav-tabs mb-4">
             <li class="nav-item">
-                <a class="nav-link <?php echo (!isset($_GET['view']) || $_GET['view'] == 'all') ? 'active' : ''; ?>" 
-                   href="index.php?page=calendar&view=all">All Events</a>
+                <a class="nav-link <?php echo ($currentView == 'upcoming') ? 'active' : ''; ?>"
+                   href="<?php echo buildUrl('calendar', ['view' => 'upcoming', 'sport' => $currentSport, 'sort' => $currentSort]); ?>">Upcoming</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php echo (isset($_GET['view']) && $_GET['view'] == 'upcoming') ? 'active' : ''; ?>" 
-                   href="index.php?page=calendar&view=upcoming">Upcoming</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link <?php echo (isset($_GET['view']) && $_GET['view'] == 'past') ? 'active' : ''; ?>" 
-                   href="index.php?page=calendar&view=past">Past Results</a>
+                <a class="nav-link <?php echo ($currentView == 'past') ? 'active' : ''; ?>"
+                   href="<?php echo buildUrl('calendar', ['view' => 'past', 'sport' => $currentSport, 'sort' => $currentSort]); ?>">Past Results</a>
             </li>
         </ul>
 
@@ -41,8 +51,8 @@
                         
                         <!-- Date and time -->
                         <h5 class="card-title mt-3">
-                            <?php echo getDayOfWeek($event['event_date']) . ', ' . formatDate($event['event_date']); ?>
-                            <span class="text-muted"> @ <?php echo formatTime($event['event_time']); ?></span>
+                            <?php echo $event['formatted_date']; ?>
+                            <span class="text-muted"> @ <?php echo $event['formatted_time']; ?></span>
                         </h5>
                         
                         <!-- Teams -->
@@ -76,13 +86,24 @@
                         <?php endif; ?>
                         
                         <!-- Winner badge for completed events -->
-                        <?php if ($event['status'] == 'completed' && !empty($event['winner_name'])): ?>
-                            <span class="badge bg-success">Winner: <?php echo htmlspecialchars($event['winner_name']); ?></span>
-                        <?php elseif ($event['status'] == 'completed' && empty($event['winner_name'])): ?>
-                            <span class="badge bg-secondary">Draw</span>
-                        <?php else: ?>
-                            <span class="badge bg-info">Scheduled</span>
-                        <?php endif; ?>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div>
+                                <?php if ($event['status'] == 'completed' && !empty($event['winner_name'])): ?>
+                                    <span class="badge bg-success">Winner: <?php echo htmlspecialchars($event['winner_name']); ?></span>
+                                <?php elseif ($event['status'] == 'completed' && empty($event['winner_name'])): ?>
+                                    <span class="badge bg-secondary">Draw</span>
+                                <?php else: ?>
+                                    <span class="badge bg-info">Scheduled</span>
+                                <?php endif; ?>
+                            </div>
+                            <div>
+                                <a href="index.php?page=event&event_id=<?php echo $event['event_id']; ?>"
+                                   class="btn btn-sm btn-primary"
+                                   style="background-color: var(--sr-dark-blue); border-color: var(--sr-dark-blue); font-weight: 700; padding: 0.5rem 1rem;">
+                                    View Details →
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -92,21 +113,25 @@
     <!-- Sidebar -->
     <div class="sidebar-section">
         <div class="sidebar-card">
-            <h3>Possible Aside</h3>
+            <h3>Placeholder Aside</h3>
             <p>Could display:
                 <ul>
                     <li>latest sports news</li>
-                    <li>sposored content</li>
+                    <li>sponsored content</li>
                     <li>live score updates</li>
                     <li>etc.</li>
                 </ul>
             </p>
 
             <p>
-                Note for reviewer:<br>
-                This is a placeholder.<br>
-                The idea is to add a bit feeling and a structural outlook of how a potential page could look like.
+                For reviewer:<br>
+                Idea was to add a bit feeling<br>
+                and a structural outlook of how<br>
+                 a potential page could look like.
             </p>
         </div>
     </div>
 </div>
+
+<!-- Load calendar JavaScript -->
+<script src="js/calendar.js"></script>

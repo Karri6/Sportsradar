@@ -18,6 +18,9 @@
             <a class="navbar-brand" href="index.php">
                 Sports Calendar
             </a>
+            <span class="navbar-text ms-auto" style="color: var(--sr-red); font-size: 1.25rem; font-weight: bold;">
+                Sportsradar Coding task 2026 (BE)
+            </span>
         </div>
     </nav>
     
