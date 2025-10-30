@@ -4,14 +4,16 @@
 
 ## Overview of the project
 
-This is a sports event calendar application built with PHP, MySQL, and Docker. The app lets users view upcoming and past sports events, add new events, and add new sports. The program serves as a mock demo showcasing clean code practices, MVC architecture, and Docker containerization.
+A sports event calendar application built with PHP, MySQL, and Docker. 
+
+The app lets users view upcoming and past sports events, add new events, and add new sports. The program serves as a mock demo showcasing clean code practices, MVC architecture, and Docker containerization.
 
 **Key Features:**
 - View upcoming and past sports events with filtering and sorting
 - Add new events with sport, venue, and team details
 - Creation of new venues and teams when adding events
 
-## Technology Stack
+## Tech Stack
 - **Backend**: PHP 8.2
 - **Database**: MySQL 8.0
 - **Frontend**: Bootstrap, JavaScript
