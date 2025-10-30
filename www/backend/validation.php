@@ -6,7 +6,7 @@
  */
 function sanitizeText($input, $maxLength = 255) {
     $input = trim($input);
-    $input = strip_tags($input); // Remove HTML tags
+    $input = strip_tags($input);
     return substr($input, 0, $maxLength);
 }
 
@@ -14,8 +14,8 @@ function sanitizeText($input, $maxLength = 255) {
  * Validate date format (YYYY-MM-DD)
  */
 function validateDate($date) {
-    $d = DateTime::createFromFormat('Y-m-d', $date);
-    return $d && $d->format('Y-m-d') === $date;
+    $dateObject = DateTime::createFromFormat('Y-m-d', $date);
+    return $dateObject && $dateObject->format('Y-m-d') === $date;
 }
 
 /**
@@ -38,4 +38,19 @@ function validateId($id) {
 function isValidFutureDate($date) {
     return strtotime($date) >= strtotime('today');
 }
-?>
+
+/**
+ * Build URL with parameters
+ * @param string $page Page name
+ * @param array $params Associative array of query parameters
+ * @return string Encoded URL
+ */
+function buildUrl($page, $params = []) {
+    $url = 'index.php?page=' . urlencode($page);
+    foreach ($params as $key => $value) {
+        if ($value !== null && $value !== '') {
+            $url .= '&' . urlencode($key) . '=' . urlencode($value);
+        }
+    }
+    return $url;
+}
