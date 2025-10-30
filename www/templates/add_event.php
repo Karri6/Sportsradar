@@ -1,7 +1,6 @@
 
 
 <div class="content-wrapper">
-    <!-- Main Form Section -->
     <div class="events-section add-event-form">
         <h1 class="mb-4">Add New Event</h1>
 
@@ -30,7 +29,6 @@
         <div class="card">
             <div class="card-body">
                 <form method="POST" action="index.php?page=add_event" id="addEventForm">
-                    <!-- CSRF Token -->
                     <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrfToken); ?>">
                     
                     <!-- Sport Selection -->
@@ -62,7 +60,6 @@
                             <option value="new">+ Add New Venue</option>
                         </select>
                         
-                        <!-- New Venue Input (hidden by default) -->
                         <div id="new_venue_fields" class="mt-2 hidden-field">
                             <div class="p-3 bg-light rounded">
                                 <h6 class="text-muted mb-2">Create New Venue:</h6>
@@ -74,7 +71,7 @@
                         </div>
                     </div>
                     
-                    <!-- Home Team -->
+                    <!-- Team Selection -->
                     <div class="mb-4">
                         <label class="form-label fw-bold">Home Team *</label>
                         <select name="home_team_id" id="home_team_id" class="form-select" required>
@@ -92,7 +89,6 @@
                             <option value="new" id="new_home_team_option" disabled hidden>+ Add New Team</option>
                         </select>
                         
-                        <!-- New Home Team Input (hidden by default) -->
                         <div id="new_home_team_fields" class="mt-2 hidden-field">
                             <div class="p-3 bg-light rounded">
                                 <h6 class="text-muted mb-2">Create New Home Team:</h6>
@@ -102,7 +98,6 @@
                         </div>
                     </div>
                     
-                    <!-- Away Team -->
                     <div class="mb-4">
                         <label class="form-label fw-bold">Away Team *</label>
                         <select name="away_team_id" id="away_team_id" class="form-select" required>
@@ -120,7 +115,6 @@
                             <option value="new" id="new_away_team_option" disabled hidden>+ Add New Team</option>
                         </select>
                         
-                        <!-- New Away Team Input (hidden by default) -->
                         <div id="new_away_team_fields" class="mt-2 hidden-field">
                             <div class="p-3 bg-light rounded">
                                 <h6 class="text-muted mb-2">Create New Away Team:</h6>
@@ -130,7 +124,6 @@
                         </div>
                     </div>
                     
-                    <!-- Date & Time -->
                     <div class="row mb-4">
                         <div class="col-md-6">
                             <label class="form-label fw-bold">Event Date *</label>
@@ -144,14 +137,12 @@
                         </div>
                     </div>
                     
-                    <!-- Description -->
                     <div class="mb-4">
                         <label class="form-label fw-bold">Description (Optional)</label>
                         <textarea name="description" class="form-control" rows="3" 
                                   placeholder="E.g., Championship Final, League Round 5, etc."></textarea>
                     </div>
                     
-                    <!-- Submit Buttons -->
                     <div class="d-flex gap-2">
                         <button type="submit" class="btn btn-primary btn-lg">
                             Add Event
@@ -181,5 +172,4 @@
     </div>
 </div>
 
-<!-- Load external JavaScript -->
 <script src="js/add_event.js"></script>

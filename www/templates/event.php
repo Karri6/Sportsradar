@@ -1,28 +1,23 @@
 <div class="content-wrapper">
-    <!-- Event Details Section -->
     <div class="events-section">
-        <!-- Back Button -->
         <div class="mb-4">
             <a href="index.php?page=calendar" class="btn btn-secondary btn-back">
                 ← Back to Calendar
             </a>
         </div>
 
-        <!-- Sport Badge -->
         <div class="mb-3">
             <span class="badge bg-primary sport-badge-large">
                 <?php echo htmlspecialchars($event['sport_name']); ?>
             </span>
         </div>
 
-        <!-- Event Header -->
         <h1 class="mb-2 page-title">
             <?php echo htmlspecialchars($event['home_team']); ?>
             <span class="text-muted mx-2">vs</span>
             <?php echo htmlspecialchars($event['away_team']); ?>
         </h1>
 
-        <!-- Date and Time -->
         <h4 class="mb-3 text-muted">
             <?php echo $event['formatted_date']; ?> @ <?php echo $event['formatted_time']; ?>
         </h4>
@@ -42,7 +37,6 @@
             <?php endif; ?>
         </div>
 
-        <!-- Event Details Card -->
         <div class="card mb-4 card-styled">
             <div class="card-header card-header-primary">
                 <h5 class="mb-0 card-title-bold">Event Details</h5>
@@ -130,7 +124,6 @@
                             <?php endif; ?>
                         </div>
                         <div class="col-md-6">
-                            <!-- Mock Map Placeholder -->
                             <div class="map-placeholder">
                                 <span class="map-placeholder-text">Map placeholder</span>
                             </div>
@@ -141,7 +134,6 @@
         <?php endif; ?>
     </div>
 
-    <!-- Sidebar Section -->
     <div class="sidebar-section">
         <!-- Buy Tickets Card -->
         <?php if ($event['status'] == 'scheduled'): ?>

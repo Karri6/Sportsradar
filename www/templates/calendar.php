@@ -1,5 +1,4 @@
 <div class="content-wrapper">
-    <!-- Events Section -->
     <div class="events-section">
         <h1 class="mb-4">Sports Events Calendar</h1>
 
@@ -26,7 +25,6 @@
             </div>
         </div>
 
-        <!-- Navigation tabs -->
         <ul class="nav nav-tabs mb-4">
             <li class="nav-item">
                 <a class="nav-link <?php echo ($currentView == 'upcoming') ? 'active' : ''; ?>"
@@ -85,7 +83,7 @@
                             <p class="mb-2"><small><?php echo htmlspecialchars($event['description']); ?></small></p>
                         <?php endif; ?>
                         
-                        <!-- Winner badge for completed events -->
+                        <!-- Winner badge for past events -->
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <div>
                                 <?php if ($event['status'] == 'completed' && !empty($event['winner_name'])): ?>
@@ -134,5 +132,4 @@
     </div>
 </div>
 
-<!-- Load calendar JavaScript -->
 <script src="js/calendar.js"></script>
