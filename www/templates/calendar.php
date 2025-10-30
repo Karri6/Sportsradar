@@ -129,6 +129,7 @@
                 and a structural outlook of how<br>
                  a potential page could look like.
             </p>
+            <p>Similar elements will be scattered across the page</p>
         </div>
     </div>
 </div>
