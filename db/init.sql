@@ -14,6 +14,7 @@ CREATE TABLE venues (
     city VARCHAR(100) NOT NULL,
     address VARCHAR(255),
     capacity INT,
+    UNIQUE KEY unique_venue (name, city),
     INDEX idx_city (city),
     INDEX idx_name (name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -24,6 +25,7 @@ CREATE TABLE teams (
     name VARCHAR(100) NOT NULL,
     city VARCHAR(100),
     FOREIGN KEY (_sport_id) REFERENCES sports(sport_id) ON DELETE RESTRICT,
+    UNIQUE KEY unique_team_sport (name, _sport_id),
     INDEX idx_name (name),
     INDEX idx_sport (_sport_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
