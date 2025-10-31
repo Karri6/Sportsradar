@@ -138,3 +138,5 @@ Sportsradar/
 8. No Pagination, all events load at once.
 9. Teams belong to one sport only.
 10. Venue is optional, events can be created without a venue.
+11. Sportsradar colorscheme like styling.
+12. Styling sheet generated almost completely. 
