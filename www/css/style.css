@@ -1,16 +1,19 @@
 /*
-    This is almost fully generated stylesheet based on a detailed prompt 
-    and styling details gotten by inspecting the Sportradar homepages using dev tools.
+    This is about 90% generated stylesheet based on a detailed prompts.
+    Styling inspiration gotten from the Sportradar homepages.
+
+    CLEANED UP VERSION - Removed duplicates and unused code
 */
 
 /* CSS Variables */
 :root {
-    --sr-red: #f00;
-    --sr-dark-blue: #00003C;
-    --sr-purple: #221E5F;
+    --sr-red: rgb(255, 3, 3);
+    --sr-dark-blue: #00003cfd;
+    --sr-light-blue: #0b0ba5ba;
+    --sr-light-gray: #f5f5f5;
+    --sr-purple: #221e5ffd;
     --sr-white: #fff;
-    --sr-light-gray: #e8e8e8;
-    --sr-text-dark: #212529;
+    --sr-text-dark: #23272b;
 }
 
 /* ================================================
@@ -76,29 +79,6 @@ body {
     align-items: center;
 }
 
-/* Filter buttons on calendar page */
-.filter-buttons {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-.filter-btn {
-    background-color: var(--sr-white);
-    color: var(--sr-text-dark);
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px 25px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.filter-btn:hover {
-    background-color: #f0f0f0;
-    transform: translateY(-2px);
-}
-
 /* ================================================
    Page Container
    ================================================ */
@@ -138,13 +118,26 @@ body {
 }
 
 .sidebar-card h3 {
-    font-weight: 600;
-    margin-bottom: 30px;
+    color: var(--sr-dark-blue);
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
 }
 
 .sidebar-card p {
     color: var(--sr-text-dark);
-    line-height: 2;
+    line-height: 1.6;
+}
+
+.sidebar-card ul {
+    padding-left: 1.5rem;
+    list-style: disc;
+}
+
+.sidebar-card ul li {
+    margin-bottom: 0.75rem;
+    color: var(--sr-text-dark);
+    line-height: 1.6;
 }
 
 /* ================================================
@@ -210,8 +203,11 @@ h1 {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
 }
 
-.card-body {
-    padding: 0;
+.event-card h4 {
+    color: var(--sr-text-dark);
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: -0.5px;
 }
 
 /* Sport Badge */
@@ -233,12 +229,8 @@ h1 {
     font-size: 1.1rem;
 }
 
-/* Team Names */
-.event-card h4 {
-    color: var(--sr-text-dark);
-    font-weight: 700;
-    font-size: 1.3rem;
-    letter-spacing: -0.5px;
+.card-body {
+    padding: 2rem;
 }
 
 /* Score Display */
@@ -262,15 +254,6 @@ h1 {
 
 .badge.bg-info {
     background-color: var(--sr-dark-blue) !important;
-}
-
-/* ================================================
-   Alerts
-   ================================================ */
-.alert-info {
-    background-color: #e7f3ff;
-    border-color: var(--sr-dark-blue);
-    color: var(--sr-dark-blue);
 }
 
 /* ================================================
@@ -301,7 +284,7 @@ footer p {
     .content-wrapper {
         flex-direction: column;
     }
-    
+
     .sidebar-section {
         width: 100%;
     }
@@ -311,24 +294,24 @@ footer p {
     .navbar {
         padding: 15px 20px;
     }
-    
+
     .secondary-nav {
         padding: 15px 20px;
         flex-wrap: wrap;
     }
-    
+
     h1 {
         font-size: 1.75rem;
     }
-    
+
     .event-card h4 {
         font-size: 1.1rem;
     }
-    
+
     .score {
         font-size: 1.5rem;
     }
-    
+
     .events-section {
         padding: 20px;
     }
@@ -339,19 +322,14 @@ footer p {
         padding: 10px 16px;
         font-size: 0.9rem;
     }
-    
+
     .sport-badge {
         font-size: 0.75rem;
         padding: 0.4rem 0.8rem;
     }
-    
+
     .nav-link {
         padding: 10px 20px !important;
-        font-size: 0.9rem;
-    }
-    
-    .filter-btn {
-        padding: 8px 20px;
         font-size: 0.9rem;
     }
 }
@@ -386,23 +364,6 @@ footer p {
     font-size: 0.95rem;
     margin-bottom: 0.75rem;
     display: block;
-}
-
-/* Form Inputs & Selects */
-.add-event-form .form-control,
-.add-event-form .form-select {
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 0.875rem;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-}
-
-.add-event-form .form-control:focus,
-.add-event-form .form-select:focus {
-    border-color: var(--sr-red);
-    box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.1);
-    outline: none;
 }
 
 /* New Fields Sections */
@@ -461,25 +422,6 @@ footer p {
 /* Button container spacing */
 .add-event-form .d-flex.gap-3 {
     gap: 1rem !important;
-}
-
-/* Help Sidebar Styling for Add Event */
-.sidebar-card h3 {
-    color: var(--sr-dark-blue);
-    font-weight: 700;
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-}
-
-.sidebar-card ul {
-    padding-left: 1.5rem;
-    list-style: disc;
-}
-
-.sidebar-card ul li {
-    margin-bottom: 0.75rem;
-    color: var(--sr-text-dark);
-    line-height: 1.6;
 }
 
 /* Alert Styling */
@@ -545,7 +487,7 @@ footer p {
         padding: 0.75rem 2rem;
         font-size: 0.95rem;
     }
-    
+
     .sidebar-card {
         margin-top: 2rem;
     }
@@ -556,12 +498,371 @@ footer p {
         flex-direction: column;
         gap: 0.75rem !important;
     }
-    
+
     .add-event-form .btn {
         width: 100%;
     }
-    
+
     .add-event-form .card-body {
         padding: 1.5rem !important;
     }
+}
+
+/* ================================================
+   Sports Management Page Styling
+   ================================================ */
+
+/* Sports List Items Hover Effect */
+.sport-list-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12) !important;
+    border-color: var(--sr-red) !important;
+}
+
+/* Submit Button Hover Effect */
+button[type="submit"]:hover {
+    background-color: #cc0000 !important;
+    border-color: #cc0000 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+}
+
+/* Form Input & Select Global Styles */
+.form-control,
+.form-select {
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 0.875rem;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--sr-red);
+    box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.1);
+    outline: none;
+}
+
+textarea.form-control {
+    resize: vertical;
+}
+
+/* ================================================
+   Reusable Component Classes
+   ================================================ */
+
+/* Section Dividers */
+.section-divider {
+    border-color: var(--sr-dark-blue);
+    border-width: 2px;
+    margin-bottom: 2rem;
+}
+
+/* Card Variants */
+.card-styled {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-sticky {
+    position: sticky;
+    top: 30px;
+}
+
+.card-header-primary {
+    background-color: var(--sr-dark-blue);
+    color: var(--sr-white);
+    border-radius: 12px 12px 0 0;
+    padding: 1.25rem;
+}
+
+.card-title-bold {
+    font-weight: 700;
+}
+
+/* List Items */
+.sport-list-item {
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.list-item-title {
+    color: var(--sr-dark-blue);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+/* Buttons */
+.btn-primary-dark {
+    background-color: var(--sr-dark-blue);
+    border-color: var(--sr-dark-blue);
+    color: var(--sr-white);
+    font-weight: 600;
+    padding: 0.875rem 2.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary-dark:hover {
+    background-color: #000028;
+    border-color: #000028;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 60, 0.3);
+}
+
+.btn-details {
+    background-color: var(--sr-dark-blue);
+    border-color: var(--sr-dark-blue);
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+}
+
+.btn-details:hover {
+    background-color: #000028;
+    border-color: #000028;
+}
+
+.btn-back {
+    background-color: var(--sr-dark-blue);
+    border-color: var(--sr-dark-blue);
+    color: var(--sr-white);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+}
+
+.btn-back:hover {
+    background-color: #000028;
+    color: var(--sr-white);
+}
+
+.btn-details {
+    background-color: var(--sr-dark-blue);
+    border-color: var(--sr-dark-blue);
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+}
+
+/* Global Alerts */
+.alert-success-styled {
+    background-color: #d4edda;
+    border-color: #28a745;
+    border-left: 4px solid #28a745;
+    color: #155724;
+    border-radius: 8px;
+}
+
+.alert-danger-styled {
+    background-color: #f8d7da;
+    border-color: #dc3545;
+    border-left: 4px solid #dc3545;
+    color: #721c24;
+    border-radius: 8px;
+}
+
+.alert-info-styled {
+    border-left: 4px solid var(--sr-dark-blue);
+    background-color: #e7f3ff;
+    border-radius: 8px;
+}
+
+/* Form Elements */
+.form-label-bold {
+    color: var(--sr-dark-blue);
+    font-weight: 600;
+}
+
+/* Info Boxes */
+.info-box {
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--sr-dark-blue);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.info-box-title {
+    color: var(--sr-dark-blue);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+/* Section Headers */
+.section-title {
+    color: var(--sr-dark-blue);
+    font-weight: 600;
+}
+
+.page-subtitle {
+    font-size: 1.1rem;
+}
+
+/* Badge Variants */
+.badge-action {
+    background-color: var(--sr-dark-blue);
+    color: var(--sr-white);
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+}
+
+/* ================================================
+   Event Detail Page Styles
+   ================================================ */
+
+/* Page Title */
+.page-title {
+    color: var(--sr-dark-blue);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+/* Badge Sizes */
+.sport-badge-large {
+    background-color: var(--sr-red) !important;
+    color: var(--sr-white);
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.badge-large {
+    font-size: 1.1rem;
+    padding: 0.75rem 1.5rem;
+}
+
+/* Team Section */
+.team-section-title {
+    color: var(--sr-dark-blue);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Score Display */
+.score-large {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--sr-red);
+    margin-bottom: 0;
+    margin-top: 1rem;
+}
+
+/* VS Text */
+.vs-text {
+    font-weight: 700;
+}
+
+/* Info Section Headers */
+.info-section-header {
+    color: var(--sr-dark-blue);
+    font-weight: 600;
+}
+
+/* Card Header Red Variant */
+.card-header-red {
+    background-color: var(--sr-red);
+    color: var(--sr-white);
+    border-radius: 12px 12px 0 0;
+    padding: 1.25rem;
+}
+
+/* Venue Title */
+.venue-title {
+    color: var(--sr-dark-blue);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Map Placeholder */
+.map-placeholder {
+    background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.map-placeholder-text {
+    color: #999;
+    font-size: 0.9rem;
+    font-weight: 600;
+    z-index: 10;
+}
+
+/* Sidebar Tickets Card */
+.sidebar-card-tickets {
+    background: linear-gradient(135deg, var(--sr-light-blue) 0%, #c41e3a 100%);
+    color: var(--sr-white);
+    border: none;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: left;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-card-tickets h3 {
+    color: var(--sr-white);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.sidebar-card-tickets p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-card-tickets .small-print {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+/* Buy Tickets Button */
+.btn-buy-tickets {
+    font-weight: 600;
+    padding: 0.875rem;
+    border-radius: 8px;
+    color: var(--sr-red);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Info List */
+.info-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.info-list li {
+    margin-bottom: 0.75rem;
+}
+
+/* Share Buttons */
+.btn-share {
+    border-width: 2px;
+}
+
+/* ================================================
+   Form Utility Classes
+   ================================================ */
+
+/* Hidden fields for JavaScript show/hide */
+.hidden-field {
+    display: none;
+}
+
+/* Text size utilities */
+.text-small {
+    font-size: 0.95rem;
 }
