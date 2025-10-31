@@ -31,9 +31,8 @@ The database has 6 tables that work together to store sports events and their de
 
 ### Entity-Relationship Diagram
 
-![Entity-Relationship Diagram](Documentation/Diagrams/Entity-Relationship Diagram.png)
-
-*This is the current database structure with all tables, their fields, and how they connect to each other.*
+![Entity-Relationship Diagram](Diagrams/Entity-Relationship-Diagram.png)
+[Entity-Relationship Diagram](Diagrams/Entity-Relationship-Diagram.png) shows the current database structure with all tables, their fields, and how they connect to each other.
 
 The main flow is: Sports have teams, events need sports, venues, and teams. Teams in an event are bridged in a separate table event teams.
 Events also have results which are stored in results table.
