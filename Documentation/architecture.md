@@ -31,7 +31,7 @@ The database has 6 tables that work together to store sports events and their de
 
 ### Entity-Relationship Diagram
 
-![Entity-Relationship Diagram](diagrams/Entity-Relationship%20Diagram.png)
+![Entity-Relationship Diagram](diagrams/Entity-Relationship-Diagram.png)
 
 *This is the current database structure with all tables, their fields, and how they connect to each other.*
 
