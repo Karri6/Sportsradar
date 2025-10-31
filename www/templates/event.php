@@ -125,7 +125,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="map-placeholder">
-                                <span class="map-placeholder-text">Map placeholder</span>
+                                <span class="map-placeholder-text">Could display eg. a map here.</span>
                             </div>
                         </div>
                     </div>
@@ -142,9 +142,6 @@
                 <a href="#" class="btn btn-light w-100 btn-buy-tickets">
                     Buy Tickets
                 </a>
-                <p class="small-print">
-                    Secure your seats now!<br>
-                </p>
             </div>
         <?php endif; ?>
 
