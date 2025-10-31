@@ -128,3 +128,13 @@ Sportsradar/
 
 ## Assumptions / Decisions
 
+1. Events Are Two-Team Only, can't list eg. a tournament.
+2. Past Events Determined by Date Only, same day but past time still shows event as upcoming.
+3. Results can't be added, just view and add events functionality.
+4. No framework used, direct code less features.
+5. Calendar as homepage, as that was the initial assignment.
+6. No Confirmation Dialogs, forms submit with no confirmation.
+7. No Edit/Delete functionality, events, sports, teams, venues can't be modified or removed after creation.
+8. No Pagination, all events load at once.
+9. Teams belong to one sport only.
+10. Venue is optional, events can be created without a venue.

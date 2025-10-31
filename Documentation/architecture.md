@@ -118,10 +118,16 @@ Did not implement anything rigorous, just noted these to point out that security
 
 ## Known Limitations
 
-Since this is a mock demo, some features are simplified:
+Since this is a mock demo, the features are simplified and some clear limitations are for example:
 
 - **No user authentication**: Anyone can add/view events
 - **No edit/delete**: Can only create, not modify or remove
 - **No past event adding**: Can only create future events.
+- **No results management**: Can't update event results.
 - **Team management placeholder**: Sport teams page is not implemented
 - **Unique constraint errors**: Frontend doesn't prevent duplicate names (shows DB error)
+- **No Pagination**: All events/sports/teams loaded at once regardless of quantity.
+- **Poor handling of a null venue**: Since the venue is optional this causes some issues.
+- **No Rate Limiting**: No protection against spam.
+- **No Date Range Filter**: Can only view upcoming and past, can't select specific dates.
+- **CSS style sheet**: Mostly generated, has redundant and overlapping styling, is awkward and big.
