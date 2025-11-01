@@ -1,3 +1,58 @@
 
 Transparent use of AI in the project
 
+AI tools in this project: ChatGPT (whatever the newest free model is) and Claude Sonnet 4.5
+
+Specific use cases:
+- (ChatGPT) Brainstorming how to ship the demo efficiently, Docker offered the simplest way to share a project of this scope.
+- (ChatGPT) Last time I used docker for anything was in 2023, so AI was a great help in setting up all the conifg files up. 
+- (ChatGPT) Generated random sports, teams, and events for the seed.sql to create mock data.
+
+- (Claude)  Almost entire styles.css was generated, based on a detailed styling info.   
+- (Claude)  Template files got initial layouts by using visual layouts created with draw.io to prompt the model.
+- (Claude)  Validation page was mostly generated, based on a prompt detailing what validation is needed. 
+- (Claude)  JS files mostly generated, prompt based on desired functionality.
+- (Claude)  .gitignore file generated
+- (Claude)  Some general refactoring, debugging, fixing, and editing code
+
+- (Copied)  csrf.php not generated, but copied from older project just to demonstrate that security has not been forgotten.
+
+---------------------------------------------------------
+
+AI acts as a "more powerful" google in my workflows.
+I avoid "vibe coding" at any cost and don't generate full functionality or files directly.
+Exceptions are the primitive skeleton files I prompt for to get a starting point to work on.
+
+My general workflow for implementing a feature is about the following:
+
+1.  Pen and paper design
+    - DB functionality and structure, file structure, program flow, notes
+
+2.  Draft a page out look with a design tool (Front end only)
+    - Eg. simple drafting with draw.io
+
+3.  Pseudo code for initial idea/implementation/methods
+    - Either simple code or clear pseudo code
+
+4.  Prompt for skeleton files using the pseudo code and designs
+    - Using the plans and designs from steps 1, 2, 3 to prompt for some skeleton files
+
+5.  Expand, correct, and refactor the skeleton files.
+    - Edit the skeleton files, 
+    - For messy skeleton files completely new prompt
+
+6.  Test, debug, fix
+    - Test functionality, find bugs and fix
+    - Iterate steps 5 & 6 until moving on.
+
+(7.)  Back to beginning (steps 1, 2, 3).
+    - Depending on if moving on to: 
+        -> 3. new pseudo code for expanding or fixing
+        -> 2. designing a new page
+        -> 1. another larger separate feature
+ 
+
+Things I pay attention to when I use the AI tools are:
+ - Good quality prompts with detailed and clear information
+ - Emphasis on paying attention to secure practices
+ - Code correctness
