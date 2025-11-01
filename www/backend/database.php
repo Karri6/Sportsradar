@@ -159,7 +159,7 @@ function getUpcomingEvents($sportFilter = null, $sortBy = 'date') {
         JOIN teams t_home ON et_home._team_id = t_home.team_id
         JOIN event_teams et_away ON e.event_id = et_away._event_id AND et_away.is_home = 0
         JOIN teams t_away ON et_away._team_id = t_away.team_id
-        WHERE e.event_date >= CURDATE() AND e.status = 'scheduled'
+        WHERE e.event_date >= CURDATE()
     ";
 
     // Add sport filter if provided
@@ -215,7 +215,7 @@ function getPastEvents($sportFilter = null, $sortBy = 'date') {
         JOIN teams t_away ON et_away._team_id = t_away.team_id
         LEFT JOIN results r ON e.event_id = r._event_id
         LEFT JOIN teams t_winner ON r._winner_id = t_winner.team_id
-        WHERE e.status = 'completed'
+        WHERE e.event_date < CURDATE()
     ";
 
     // Add sport filter if provided
