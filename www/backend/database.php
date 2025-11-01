@@ -136,7 +136,7 @@ function getAllEvents() {
 /**
  * Get upcoming events
  */
-function getUpcomingEvents() {
+function getUpcomingEvents($sportFilter = null, $sortBy = 'date') {
     global $databaseConnection;
 
     $sql = "
@@ -147,6 +147,7 @@ function getUpcomingEvents() {
             e.description,
             e.status,
             s.name AS sport_name,
+            s.sport_id,
             v.name AS venue_name,
             v.city AS venue_city,
             t_home.name AS home_team,
@@ -159,17 +160,34 @@ function getUpcomingEvents() {
         JOIN event_teams et_away ON e.event_id = et_away._event_id AND et_away.is_home = 0
         JOIN teams t_away ON et_away._team_id = t_away.team_id
         WHERE e.event_date >= CURDATE() AND e.status = 'scheduled'
-        ORDER BY e.event_date ASC, e.event_time ASC
     ";
 
-    $upcomingEventsQuery = $databaseConnection->query($sql);
-    return $upcomingEventsQuery->fetchAll();
+    // Add sport filter if provided
+    if ($sportFilter) {
+        $sql .= " AND e._sport_id = :sportFilter";
+    }
+
+    // Add sorting
+    if ($sortBy === 'sport') {
+        $sql .= " ORDER BY s.name ASC, e.event_date ASC, e.event_time ASC";
+    } else {
+        $sql .= " ORDER BY e.event_date ASC, e.event_time ASC";
+    }
+
+    if ($sportFilter) {
+        $upcomingEventsQuery = $databaseConnection->prepare($sql);
+        $upcomingEventsQuery->execute(['sportFilter' => $sportFilter]);
+        return $upcomingEventsQuery->fetchAll();
+    } else {
+        $upcomingEventsQuery = $databaseConnection->query($sql);
+        return $upcomingEventsQuery->fetchAll();
+    }
 }
 
 /**
  * Get past events
  */
-function getPastEvents() {
+function getPastEvents($sportFilter = null, $sortBy = 'date') {
     global $databaseConnection;
 
     $sql = "
@@ -180,6 +198,7 @@ function getPastEvents() {
             e.description,
             e.status,
             s.name AS sport_name,
+            s.sport_id,
             v.name AS venue_name,
             v.city AS venue_city,
             t_home.name AS home_team,
@@ -197,11 +216,28 @@ function getPastEvents() {
         LEFT JOIN results r ON e.event_id = r._event_id
         LEFT JOIN teams t_winner ON r._winner_id = t_winner.team_id
         WHERE e.status = 'completed'
-        ORDER BY e.event_date DESC, e.event_time DESC
     ";
 
-    $pastEventsQuery = $databaseConnection->query($sql);
-    return $pastEventsQuery->fetchAll();
+    // Add sport filter if provided
+    if ($sportFilter) {
+        $sql .= " AND e._sport_id = :sportFilter";
+    }
+
+    // Add sorting
+    if ($sortBy === 'sport') {
+        $sql .= " ORDER BY s.name ASC, e.event_date DESC, e.event_time DESC";
+    } else {
+        $sql .= " ORDER BY e.event_date DESC, e.event_time DESC";
+    }
+
+    if ($sportFilter) {
+        $pastEventsQuery = $databaseConnection->prepare($sql);
+        $pastEventsQuery->execute(['sportFilter' => $sportFilter]);
+        return $pastEventsQuery->fetchAll();
+    } else {
+        $pastEventsQuery = $databaseConnection->query($sql);
+        return $pastEventsQuery->fetchAll();
+    }
 }
 
 /**
@@ -255,6 +291,52 @@ function addEvent($sportId, $venueId, $eventDate, $eventTime, $homeTeamId, $away
         $databaseConnection->rollBack();
         return ['success' => false, 'error' => $e->getMessage()];
     }
+}
+
+/**
+ * Get a single event by ID
+ */
+function getEventById($eventId) {
+    global $databaseConnection;
+
+    $sql = "
+        SELECT
+            e.event_id,
+            e.event_date,
+            e.event_time,
+            e.description,
+            e.status,
+            s.name AS sport_name,
+            s.sport_id,
+            v.venue_id,
+            v.name AS venue_name,
+            v.city AS venue_city,
+            v.address AS venue_address,
+            v.capacity AS venue_capacity,
+            t_home.team_id AS home_team_id,
+            t_home.name AS home_team,
+            t_home.city AS home_team_city,
+            t_away.team_id AS away_team_id,
+            t_away.name AS away_team,
+            t_away.city AS away_team_city,
+            r.home_score,
+            r.away_score,
+            t_winner.name AS winner_name
+        FROM events e
+        JOIN sports s ON e._sport_id = s.sport_id
+        LEFT JOIN venues v ON e._venue_id = v.venue_id
+        JOIN event_teams et_home ON e.event_id = et_home._event_id AND et_home.is_home = 1
+        JOIN teams t_home ON et_home._team_id = t_home.team_id
+        JOIN event_teams et_away ON e.event_id = et_away._event_id AND et_away.is_home = 0
+        JOIN teams t_away ON et_away._team_id = t_away.team_id
+        LEFT JOIN results r ON e.event_id = r._event_id
+        LEFT JOIN teams t_winner ON r._winner_id = t_winner.team_id
+        WHERE e.event_id = ?
+    ";
+
+    $eventQuery = $databaseConnection->prepare($sql);
+    $eventQuery->execute([$eventId]);
+    return $eventQuery->fetch();
 }
 
 /**
