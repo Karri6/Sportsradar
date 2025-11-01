@@ -32,6 +32,8 @@
                 </span>
             <?php elseif ($event['status'] == 'completed' && empty($event['winner_name'])): ?>
                 <span class="badge bg-secondary badge-large">Draw</span>
+            <?php elseif (strtotime($event['event_date']) < strtotime('today') && $event['status'] != 'completed'): ?>
+                <span class="badge bg-warning text-dark badge-large">Awaiting results</span>
             <?php else: ?>
                 <span class="badge bg-info badge-large">Scheduled</span>
             <?php endif; ?>
@@ -136,7 +138,7 @@
 
     <div class="sidebar-section">
         <!-- Buy Tickets Card -->
-        <?php if ($event['status'] == 'scheduled'): ?>
+        <?php if (strtotime($event['event_date']) > strtotime('today')): ?>
             <div class="sidebar-card-tickets">
                 <h3>Get Tickets</h3>
                 <a href="#" class="btn btn-light w-100 btn-buy-tickets">
