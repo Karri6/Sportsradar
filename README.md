@@ -20,7 +20,7 @@ The app lets users view upcoming and past sports events, add new events, and add
 - **DevOps**: Docker, Docker Compose
 
 ## Architecture and AI use
-For detailed architecture, database schema, and design, see [Architecture Documentation](documentation/architecture.md).
+For detailed architecture, database schema, and design, see [Architecture documentation](documentation/architecture.md).
 
 For the AI tools used in this project, see [AI reflection txt](Documentation/AI_Reflection.txt)
 
