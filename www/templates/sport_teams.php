@@ -1,4 +1,5 @@
 <div class="content-wrapper">
+    <!-- Sport Teams Placeholder Section -->
     <div class="events-section">
         <div class="mb-4">
             <a href="index.php?page=sports" class="btn btn-secondary btn-back">
