@@ -2,6 +2,20 @@
  * Calendar page filtering functionality
  */
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Attach event listeners to filter elements
+    const sportFilter = document.getElementById('sportFilter');
+    const sortBy = document.getElementById('sortBy');
+
+    if (sportFilter) {
+        sportFilter.addEventListener('change', applyFilters);
+    }
+
+    if (sortBy) {
+        sortBy.addEventListener('change', applyFilters);
+    }
+});
+
 /**
  * Apply selected filters and navigate to updated URL
  */

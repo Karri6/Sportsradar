@@ -6,7 +6,7 @@
         <div class="calendar-filters row mb-4">
             <div class="filter-group col-md-4">
                 <label for="sportFilter" class="form-label">Filter by Sport</label>
-                <select id="sportFilter" class="form-select" onchange="applyFilters()">
+                <select id="sportFilter" class="form-select">
                     <option value="">All Sports</option>
                     <?php foreach ($sports as $sport): ?>
                         <option value="<?php echo $sport['sport_id']; ?>"
@@ -18,7 +18,7 @@
             </div>
             <div class="filter-group col-md-4">
                 <label for="sortBy" class="form-label">Sort By</label>
-                <select id="sortBy" class="form-select" onchange="applyFilters()">
+                <select id="sortBy" class="form-select">
                     <option value="date" <?php echo ($currentSort == 'date') ? 'selected' : ''; ?>>Date</option>
                     <option value="sport" <?php echo ($currentSort == 'sport') ? 'selected' : ''; ?>>Sport</option>
                 </select>
@@ -28,11 +28,15 @@
         <ul class="calendar-view-tabs nav nav-tabs mb-4">
             <li class="nav-item">
                 <a class="nav-link <?php echo ($currentView == 'upcoming') ? 'active' : ''; ?>"
-                   href="<?php echo buildUrl('calendar', ['view' => 'upcoming', 'sport' => $currentSport, 'sort' => $currentSort]); ?>">Upcoming</a>
+                   href="<?php 
+                   echo buildUrl('calendar', ['view' => 'upcoming', 'sport' => $currentSport, 'sort' => $currentSort]); ?>
+                   ">Upcoming</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link <?php echo ($currentView == 'past') ? 'active' : ''; ?>"
-                   href="<?php echo buildUrl('calendar', ['view' => 'past', 'sport' => $currentSport, 'sort' => $currentSort]); ?>">Past Results</a>
+                   href="<?php 
+                   echo buildUrl('calendar', ['view' => 'past', 'sport' => $currentSport, 'sort' => $currentSort]); ?>
+                   ">Past Results</a>
             </li>
         </ul>
 
@@ -46,7 +50,8 @@
                     <div class="event-card">
                         <!-- Sport badge -->
                         <div class="event-card-header">
-                            <span class="badge bg-primary sport-badge"><?php echo htmlspecialchars($event['sport_name']); ?></span>
+                            <span class="badge bg-primary sport-badge">
+                                <?php echo htmlspecialchars($event['sport_name']); ?></span>
                         </div>
 
                         <!-- Date and time -->
@@ -97,9 +102,12 @@
                         <div class="event-card-footer d-flex justify-content-between align-items-center mt-3">
                             <div class="event-status">
                                 <?php if ($event['status'] == 'completed' && !empty($event['winner_name'])): ?>
-                                    <span class="badge bg-success">Winner: <?php echo htmlspecialchars($event['winner_name']); ?></span>
+                                    <span class="badge bg-success">Winner:
+                                        <?php echo htmlspecialchars($event['winner_name']); ?></span>
                                 <?php elseif ($event['status'] == 'completed' && empty($event['winner_name'])): ?>
                                     <span class="badge bg-secondary">Draw</span>
+                                <?php elseif ($currentView == 'past' && $event['status'] != 'completed'): ?>
+                                    <span class="badge bg-warning text-dark">Awaiting results</span>
                                 <?php else: ?>
                                     <span class="badge bg-info">Scheduled</span>
                                 <?php endif; ?>
