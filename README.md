@@ -54,6 +54,8 @@ The default values in `.env.example` work as they are, can also modify if you wa
 ```
 docker-compose up -d
 ```
+> Docker might require to run ```docker-compose up -d --build``` on the first run
+
 
 This will start three containers:
 - `sports_web` - PHP web server
