@@ -8,8 +8,6 @@ A sports event calendar application built with PHP, MySQL, and Docker.
 
 The app lets users view upcoming and past sports events, add new events, and add new sports. 
 
-For the AI use in this project see the [AI reflection txt](Documentation/AI_Reflection.txt)
-
 **Key Features:**
 - View upcoming and past sports events with filtering and sorting
 - Add new events with sport, venue, and team details
@@ -21,8 +19,10 @@ For the AI use in this project see the [AI reflection txt](Documentation/AI_Refl
 - **Frontend**: Bootstrap, JavaScript
 - **DevOps**: Docker, Docker Compose
 
-## Architecture
+## Architecture and AI use
 For detailed architecture, database schema, and design, see [Architecture Documentation](documentation/architecture.md).
+
+For the AI tools used in this project, see [AI reflection txt](Documentation/AI_Reflection.txt)
 
 ## Prerequisites
 - Docker Desktop (Windows/Mac) or Docker Engine + Docker Compose (Linux)
