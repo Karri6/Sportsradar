@@ -6,7 +6,7 @@
 
 A sports event calendar application built with PHP, MySQL, and Docker. 
 
-The app lets users view upcoming and past sports events, add new events, and add new sports. The program serves as a mock demo showcasing clean code practices, MVC architecture, and Docker containerization.
+The app lets users view upcoming and past sports events, add new events, and add new sports. 
 
 **Key Features:**
 - View upcoming and past sports events with filtering and sorting
@@ -19,8 +19,10 @@ The app lets users view upcoming and past sports events, add new events, and add
 - **Frontend**: Bootstrap, JavaScript
 - **DevOps**: Docker, Docker Compose
 
-## Architecture
-For detailed architecture, database schema, and design, see [Architecture Documentation](documentation/architecture.md).
+## Architecture and AI use
+For detailed architecture, database schema, and design, see [Architecture documentation](Documentation/architecture.md).
+
+For the AI tools used in this project, see [AI reflection txt](Documentation/AI_Reflection.txt)
 
 ## Prerequisites
 - Docker Desktop (Windows/Mac) or Docker Engine + Docker Compose (Linux)
@@ -52,9 +54,11 @@ The default values in `.env.example` work as they are, can also modify if you wa
 ```
 docker-compose up -d
 ```
+> Docker might require to run ```docker-compose up -d --build``` on the first run
+
 
 This will start three containers:
-- `sports_web` - PHP/Apache web server
+- `sports_web` - PHP web server
 - `sports_db` - MySQL database
 - `sports_phpmyadmin` - Database management interface
 
