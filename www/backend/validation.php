@@ -41,9 +41,6 @@ function isValidFutureDate($date) {
 
 /**
  * Build URL with parameters
- * @param string $page Page name
- * @param array $params Associative array of query parameters
- * @return string Encoded URL
  */
 function buildUrl($page, $params = []) {
     $url = 'index.php?page=' . urlencode($page);
