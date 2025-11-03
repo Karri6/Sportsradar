@@ -49,7 +49,7 @@ cp .env.example .env
 The default values in `.env.example` work as they are, but if you want/need custom database credentials these can be modified.
 
 ### Start with configuration
-> Make sure Docker & Docker Compose are installed
+> Make sure Docker & Docker Compose are installed *(and running!)*
 
 ```
 docker-compose up -d
