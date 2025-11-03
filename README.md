@@ -144,4 +144,5 @@ Sportsradar/
 10. Teams belong to one sport only.
 11. Venue is optional, events can be created without a venue.
 12. Sportsradar brand colorscheme likeness to enhance styling.
-13. Styling sheet generated almost completely. 
+13. Styling sheet generated almost completely.
+14. Venues are optional. Noticed too late that I had forgotten to add NOT NULL to the events table.
