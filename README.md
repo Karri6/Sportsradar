@@ -4,7 +4,7 @@
 
 ## Overview of the project
 
-A sports event calendar application built with PHP, MySQL, and Docker. 
+A sports event calendar application built using PHP, MySQL, and shipped with Docker. 
 
 The app lets users view upcoming and past sports events, add new events, and add new sports. 
 
@@ -31,7 +31,7 @@ For the AI tools used in this project, see [AI reflection txt](Documentation/AI_
 
 ### Clone the repository
 
-Clone the repository to a suitable directory, for example: users/user/documents/
+Clone the repository to a suitable directory, for example: users/ your username /documents/
 
 ```
 git clone https://github.com/Karri6/Sportsradar.git
@@ -46,7 +46,7 @@ Copy the example environment file and adjust if needed:
 cp .env.example .env
 ```
 
-The default values in `.env.example` work as they are, can also modify if you want/need custom database credentials.
+The default values in `.env.example` work as they are, but if you want/need custom database credentials these can be modified.
 
 ### Start with configuration
 > Make sure Docker & Docker Compose are installed
@@ -54,15 +54,15 @@ The default values in `.env.example` work as they are, can also modify if you wa
 ```
 docker-compose up -d
 ```
-> Docker might require to run ```docker-compose up -d --build``` on the first run
+> Docker might require to run ```docker-compose up -d --build``` on the first build
 
 
-This will start three containers:
+This will start the containers:
 - `sports_web` - PHP web server
 - `sports_db` - MySQL database
 - `sports_phpmyadmin` - Database management interface
 
-### Check if all containers are running
+### (Optional) - Check if all containers are running
 
 ```
 docker-compose ps
@@ -92,7 +92,7 @@ The database will automatically initialize with the schema and sample data from 
 docker-compose down
 ```
 
-To also remove volumes (reset database):
+To also reset the database:
 
 ```
 docker-compose down -v
@@ -132,16 +132,16 @@ Sportsradar/
 
 ## Assumptions / Decisions
 
-1. Events Are Two-Team Only, can't list eg. a tournament.
-2. Past Events Determined by Date Only, same day but past time still shows event as upcoming.
+1. Events are Two-Team only, can't list eg. a tournament.
+2. Past events determined by date only, same day but past time still shows event as upcoming.
 3. Results can't be added, just view and add events functionality.
 4. No framework used, direct code less features.
-5. Procedural architecture instead of OOP, small and simple project.
+5. Procedural architecture instead of OOP -> small and simple project.
 6. Calendar as homepage, as that was the initial assignment.
-7. No Confirmation Dialogs, forms submit with no confirmation.
+7. No *Confirmation Dialogs*, forms submit with no confirmation.
 8. No Edit/Delete functionality, events, sports, teams, venues can't be modified or removed after creation.
 9. No Pagination, all events load at once.
 10. Teams belong to one sport only.
 11. Venue is optional, events can be created without a venue.
-12. Sportsradar colorscheme like styling.
+12. Sportsradar brand colorscheme likeness to enhance styling.
 13. Styling sheet generated almost completely. 
